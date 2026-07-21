@@ -45,6 +45,7 @@ const plantButton = document.getElementById('plantButton');
 const harvestButton = document.getElementById('harvestButton');
 const nextDayButton = document.getElementById('nextDayButton');
 const expandButton = document.getElementById('expandButton');
+const forageButton = document.getElementById('forageButton');
 const saveButton = document.getElementById('saveButton');
 const resetButton = document.getElementById('resetButton');
 
@@ -185,10 +186,20 @@ function harvestSelectedCrop() {
     }
 
     const crop = SEED_DATA[plot.crop];
+    const seedYield = 1 + Math.floor(Math.random() * 2);
     state.money += crop.sellPrice;
+    state.inventory[plot.crop] = (state.inventory[plot.crop] || 0) + seedYield;
     plot.crop = null;
     plot.growth = 0;
     plot.ready = false;
+    render();
+}
+
+function forageSeeds() {
+    const seedKeys = Object.keys(SEED_DATA);
+    const seedKey = seedKeys[Math.floor(Math.random() * seedKeys.length)];
+    const amount = 1 + Math.floor(Math.random() * 2);
+    state.inventory[seedKey] = (state.inventory[seedKey] || 0) + amount;
     render();
 }
 
@@ -251,6 +262,7 @@ plantButton.addEventListener('click', plantSelectedCrop);
 harvestButton.addEventListener('click', harvestSelectedCrop);
 nextDayButton.addEventListener('click', advanceDay);
 expandButton.addEventListener('click', expandFarm);
+forageButton.addEventListener('click', forageSeeds);
 saveButton.addEventListener('click', () => {
     saveState();
     window.alert('Farm saved in your browser.');
