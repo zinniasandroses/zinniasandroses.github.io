@@ -6,10 +6,14 @@ yay
 stuff for game:
 1) have a farm(planting crops, having animals, building buildings, fish in pond, chop trees)
  - 1.1) vaccinate your animals or else / medicate your animals or else
-2) have level system for skills(plowing, chopping, fishing)
+ - 1.2) max plots is 30, min is 1
+ - 1.3) starter crops: carrots, tomatoes, corn, lettuce, radishes
+2) have level system for skills(plowing, chopping, fishing, etc)
+ - 2.1) max level is 100
 3) have farm expansions(getting more crop planting spots, better/bigger equipment, hiring farmhands, buying out other farms)
 - 3.1) you start with 25 acres, you can expand over time/as you get enough money
 4) crop rotations! 
+ - 4.1) soil acidity/basicness determines what crops can go in which fields
 5) global warming / seasons changing
  - 5.1) seasonal crops
 6) special events(thievery, droughts, storms, fires, animals escaping, tariffs, helping homeless people, immigration, disease outbreaks)
@@ -22,11 +26,13 @@ stuff for game:
  - 8.1) reputation determines how much your neighbors/other vendors will charge you for items
 9) newspaper that updates daily and has no sense of importance
 10) resources
- - 10.1) money($5 = 1 arim, $1 = 1 cinat)
+ - 10.1) money(silver = cinat, gold = arim, 1 arim = 100 cinat)
  - 10.2) seeds(you can buy seeds one by one, or in a pack(5 seeds, 10 seeds, 20 seeds, 50 seeds, 100 seeds), you can also get seeds from your own produce(randomized amount))
  - 10.3) fuel(gas, solar power, geothermal, hydroelectric, windmills, human labor, horsepower)
  - 10.4) animals(cows, chickens, goats, sheep, fish, pigs, horses, oxen, donkeys, mules, buffalo, ducks, herding dogs, rabbits, stable cats, turkeys)
  - 10.5) reputation(reputation points determine how much things cost, everyone starts at 0 points, maximum is 100, minimum is -100)
+
+
 
 
 

@@ -1,0 +1,200 @@
+:root {
+    color-scheme: light;
+    --bg: #f5f1df;
+    --panel: #fffdf4;
+    --accent: #3e7c43;
+    --accent-dark: #29522d;
+    --text: #1f2a1f;
+    --border: #d6cab1;
+    --shadow: 0 12px 28px rgba(58, 84, 48, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, #f8f4e6, #edf6e6 100%);
+    color: var(--text);
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: #234f2b;
+    color: white;
+}
+
+.eyebrow {
+    margin: 0 0 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+}
+
+h1, h2, h3, p {
+    margin-top: 0;
+}
+
+.stats {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.stat-card {
+    min-width: 90px;
+    padding: 0.65rem 0.9rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.16);
+    text-align: center;
+}
+
+.label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.small-note {
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: #5f654a;
+}
+
+.game-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.controls label,
+.controls select,
+.controls button {
+    display: block;
+    width: 100%;
+}
+
+.controls select,
+.controls button {
+    margin-top: 0.5rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.controls button {
+    cursor: pointer;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+}
+
+.controls button:hover {
+    background: var(--accent-dark);
+}
+
+.button-row {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.button-row.narrow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+button.danger {
+    background: #8b3f3f;
+}
+
+.inventory-box {
+    margin-top: 1rem;
+}
+
+#inventoryList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#inventoryList li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.plot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.9rem;
+}
+
+.plot {
+    position: relative;
+    min-height: 170px;
+    padding: 0.8rem;
+    border-radius: 14px;
+    border: 2px solid #b9c6aa;
+    background: #d8e7c6;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.plot.selected {
+    border-color: #245d26;
+    box-shadow: 0 0 0 3px rgba(44, 102, 56, 0.3);
+}
+
+.plot .plot-title {
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.plot .crop-icon {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+
+.plot .tag {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(30, 67, 38, 0.15);
+    font-size: 0.78rem;
+}
+
+.plot.empty {
+    background: #f2ecd4;
+}
+
+footer {
+    text-align: center;
+    padding: 0.75rem 1rem 1.5rem;
+}
+
+@media (max-width: 850px) {
+    .game-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

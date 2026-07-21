@@ -13,15 +13,43 @@
         <h1>welcome to new york... its been waiting for ya</h1>
     </header>
 
-    <main>
-        <p id="test">i drink soda i eat pizza</p>
-        <button onClick="changeText()">ayo click me</button>
-        <p>Money: <span id="moneyDisplay">0</span></p>
-        <button id="addMoneyButton">Earn 10 Gold</button>
+    <main class="game-layout">
+        <section class="panel controls">
+            <h2>Farm actions</h2>
+            <p class="small-note">README 10.1 rule: 5 cinat = 1 arim.</p>
+            <label for="seedSelect">Choose a seed</label>
+            <select id="seedSelect"></select>
+
+            <div class="button-row">
+                <button id="plantButton">Plant in selected plot</button>
+                <button id="harvestButton">Harvest selected plot</button>
+                <button id="nextDayButton">Next day</button>
+                <button id="expandButton">Expand farm</button>
+            </div>
+
+            <div class="inventory-box">
+                <h3>Seed stock</h3>
+                <ul id="inventoryList"></ul>
+            </div>
+
+            <div class="button-row narrow">
+                <button id="saveButton">Save farm</button>
+                <button id="resetButton" class="danger">Reset farm</button>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <h2>Garden plots</h2>
+                <p>Select a plot, then plant or harvest.</p>
+            </div>
+            <div id="plotGrid" class="plot-grid"></div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 gherkin</p>
+        <p>&copy; 2026 gherkin do not delete</p>
+        <p>Browser save demo using localStorage as the lightweight database.</p>
     </footer>
 
     <!-- Link to your external JavaScript file -->
