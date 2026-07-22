@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Building",
+  "type": "object",
+  "required": ["id", "label"],
+  "properties": {
+    "id": { "type": "string" },
+    "label": { "type": "string" },
+    "cost": { "type": "number" },
+    "size": { "type": "string" }
+  },
+  "additionalProperties": true
+}

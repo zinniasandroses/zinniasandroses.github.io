@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill",
+  "type": "object",
+  "required": ["id", "label"],
+  "properties": {
+    "id": { "type": "string" },
+    "label": { "type": "string" },
+    "maxLevel": { "type": "number" },
+    "category": { "type": "string" }
+  },
+  "additionalProperties": true
+}

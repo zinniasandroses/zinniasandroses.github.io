@@ -1,0 +1,22 @@
+[
+  {
+    "id": "parcel-001",
+    "owner": "player",
+    "terrainType": "grassland",
+    "biome": "farm",
+    "elevation": 0,
+    "moisture": 50,
+    "soilType": "loam",
+    "soilPh": 6.5,
+    "drainage": "moderate",
+    "fertility": 70,
+    "waterAccess": true,
+    "treeDensity": 5,
+    "rockDensity": 2,
+    "roadAccess": true,
+    "currentUsage": "farm",
+    "buildable": true,
+    "protected": true,
+    "futureReserved": false
+  }
+]

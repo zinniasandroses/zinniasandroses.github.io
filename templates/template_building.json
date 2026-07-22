@@ -1,0 +1,8 @@
+{
+  "id": "building-template",
+  "label": "Example Building",
+  "cost": 100,
+  "size": "small",
+  "description": "Describe the building here.",
+  "optionalNotes": "Keep building metadata in data and avoid mixing UI logic into the content file."
+}

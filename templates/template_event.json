@@ -1,0 +1,9 @@
+{
+  "id": "event-template",
+  "label": "Example Event",
+  "severity": "minor",
+  "weight": 1,
+  "cooldownMinutes": 30,
+  "description": "Describe the event here.",
+  "optionalNotes": "Use severity, probability, cooldown, and prerequisites to keep event behavior flexible."
+}

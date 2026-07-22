@@ -1,0 +1,7 @@
+{
+  "id": "weather-template",
+  "label": "Example Weather",
+  "severity": 1,
+  "description": "Describe the weather state here.",
+  "optionalNotes": "Weather definitions should remain data-driven and extensible."
+}

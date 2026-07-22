@@ -1,0 +1,7 @@
+{
+  "id": "neighbor-template",
+  "label": "Example Neighbor",
+  "relationship": 0,
+  "description": "Describe the neighbor here.",
+  "optionalNotes": "Neighbors should be modeled as content and driven by simulation systems later."
+}

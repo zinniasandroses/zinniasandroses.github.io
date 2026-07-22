@@ -1,3 +1,8 @@
+import { eventBus } from './src/core/EventBus.js';
+import { GameEvents } from './src/events/EventNames.js';
+import { createSimulationManager } from './src/simulation/SimulationManager.js';
+import { createWorldManager } from './src/world/systems/WorldManager.js';
+
 const SEED_DATA = {
     carrot: { label: 'Carrot', price: 2, growthTime: 2, sellPrice: 5, icon: '🥕' },
     tomato: { label: 'Tomato', price: 3, growthTime: 3, sellPrice: 8, icon: '🍅' },
@@ -34,6 +39,35 @@ const defaultState = {
 
 let state = loadState();
 let messageTimeout = null;
+
+const simulationManager = createSimulationManager();
+const worldManager = createWorldManager();
+
+function bootstrapRuntimeFramework() {
+    simulationManager.start();
+    eventBus.emit(GameEvents.GameLoaded, {
+        state,
+        simulation: simulationManager.getState(),
+        world: worldManager.getGrid()
+    });
+
+    window.__farmGameFramework = {
+        simulation: simulationManager,
+        world: worldManager,
+        eventBus,
+        getState: () => ({
+            simulation: simulationManager.getState(),
+            world: {
+                grid: worldManager.getGrid(),
+                parcels: worldManager.getParcels(),
+                objects: worldManager.getObjects(),
+                regions: worldManager.getRegionDefinitions()
+            }
+        })
+    };
+}
+
+bootstrapRuntimeFramework();
 
 const moneyDisplay = document.getElementById('moneyDisplay');
 const dayDisplay = document.getElementById('dayDisplay');
@@ -216,6 +250,11 @@ function advanceDay() {
         plot.ready = plot.growth >= crop.growthTime;
     });
 
+    eventBus.emit(GameEvents.DayEnded, {
+        day: state.day,
+        simulation: simulationManager.getState(),
+        world: worldManager.getGrid()
+    });
     render();
 }
 

@@ -1,36 +1,40 @@
-# Project architecture foundation
+# Architecture
 
-This repository is currently a static browser game prototype. The existing UI and CSS are intentionally preserved.
+## Production direction
+The project is now moving from a single-file browser prototype into a production-minded, data-driven simulation architecture.
 
 ## Architecture goals
+- Preserve the current prototype UI and CSS.
+- Keep gameplay behavior stable.
+- Extract only stable, self-contained, reusable code.
+- Use registries, validation, and event-driven communication.
+- Keep content loadable without touching engine code.
+- Keep the save layer versioned and future-compatible.
 
-- Keep the current prototype working.
-- Extend the existing codebase without a rewrite.
-- Move reusable logic into small modules over time.
-- Keep all future content data-driven.
-- Preserve backward compatibility for saves.
+## Layer model
+1. Prototype shell
+   - [index.html](index.html), [style.css](style.css), and [script.js](script.js) remain the current interactive layer.
+2. Foundation layer
+   - Event bus, validation, registry, save system, and version metadata.
+3. Simulation layer
+   - Calendar, season, weather, event orchestration, and world-state management.
+4. World layer
+   - WorldManager, ParcelSystem, PlacementSystem, world objects, region definitions, and delta save strategy.
+5. Content layer
+   - JSON content, schemas, templates, and discovery/loading systems.
 
-## Current foundation
+## Current architecture status
+The engine is not yet wired into every gameplay system, but the boundaries are now present for future extension without redesign.
 
-The initial extraction introduces the following reusable layers:
+## System responsibilities
+- SimulationManager: orchestrates world updates and emits simulation lifecycle events.
+- CalendarService: tracks date-like world state.
+- SeasonManager: tracks the current season and emits season changes.
+- WeatherManager: tracks weather state from data definitions.
+- EventManager: acts as the future event orchestration boundary.
+- Registry: validates, stores, and looks up content.
+- ContentLoader: discovers and registers content entries.
+- SaveSystem: provides a versioned save contract.
 
-- `src/core/EventBus.js` for application-wide event broadcasting.
-- `src/core/SaveSystem.js` for versioned local save scaffolding.
-- `src/core/TimeSystem.js` for time progression consistency.
-- `src/data/loaders/ContentLoader.js` for content discovery and registration.
-- `src/data/loaders/contentCatalog.js` for the full future content inventory.
-- `src/registries/Registry.js` for content validation and lookup.
-- `src/validation/schema.js` for simple content validation.
-- `src/events/EventNames.js` for event naming consistency.
-- `src/developer/DeveloperMode.js` for future tool registration.
-
-## Rules followed
-
-- No gameplay rewrite.
-- No UI/CSS redesign.
-- No migration of old gameplay data.
-- No breaking changes to existing behavior.
-
-## Next milestone direction
-
-The next safe extraction focuses on utilities and constants before any gameplay boundary changes.
+## Extension principle
+Every future gameplay system should plug into the simulation backbone rather than replacing it.

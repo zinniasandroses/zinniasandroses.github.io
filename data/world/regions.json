@@ -1,0 +1,9 @@
+[
+  { "id": "town", "label": "Town", "description": "Placeholder region for settlement growth." },
+  { "id": "forest", "label": "Forest", "description": "Placeholder region for future resource and wildlife systems." },
+  { "id": "lake", "label": "Lake", "description": "Placeholder region for water-based systems." },
+  { "id": "mine", "label": "Mine", "description": "Placeholder region for future extraction systems." },
+  { "id": "neighbor-farms", "label": "Neighbor Farms", "description": "Placeholder region for neighboring farm ownership." },
+  { "id": "marketplace", "label": "Marketplace", "description": "Placeholder region for trade systems." },
+  { "id": "shipping-depot", "label": "Shipping Depot", "description": "Placeholder region for logistics and transport." }
+]

@@ -1,0 +1,8 @@
+{
+  "id": "skill-template",
+  "label": "Example Skill",
+  "maxLevel": 100,
+  "category": "farming",
+  "description": "Describe the skill here.",
+  "optionalNotes": "Skills should remain registry-backed and not hardcoded into the gameplay loop."
+}

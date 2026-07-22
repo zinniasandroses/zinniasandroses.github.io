@@ -1,0 +1,8 @@
+{
+  "id": "recipe-template",
+  "label": "Example Recipe",
+  "inputs": [],
+  "outputs": [],
+  "description": "Describe the recipe here.",
+  "optionalNotes": "Recipes are content definitions that should remain separate from gameplay engine code."
+}

@@ -1,14 +1,21 @@
 export const GameEvents = Object.freeze({
     GameStarted: 'GameStarted',
+    GameLoaded: 'GameLoaded',
+    GameSaved: 'GameSaved',
+    ContentLoaded: 'ContentLoaded',
     MinutePassed: 'MinutePassed',
     HourPassed: 'HourPassed',
+    DayStarted: 'DayStarted',
     DayEnded: 'DayEnded',
+    SeasonChanged: 'SeasonChanged',
+    WeatherChanged: 'WeatherChanged',
+    SimulationTick: 'SimulationTick',
     CropHarvested: 'CropHarvested',
     AnimalFed: 'AnimalFed',
     ItemPurchased: 'ItemPurchased',
     BuildingPlaced: 'BuildingPlaced',
     MarketUpdated: 'MarketUpdated',
-    WeatherChanged: 'WeatherChanged',
     SkillLevelUp: 'SkillLevelUp',
-    NeighborRelationshipChanged: 'NeighborRelationshipChanged'
+    NeighborRelationshipChanged: 'NeighborRelationshipChanged',
+    EventManagerTriggered: 'EventManagerTriggered'
 });

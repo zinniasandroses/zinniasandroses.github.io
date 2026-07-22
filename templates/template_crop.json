@@ -1,0 +1,9 @@
+{
+  "id": "crop-template",
+  "label": "Example Crop",
+  "growthTime": 3,
+  "sellPrice": 8,
+  "icon": "🌱",
+  "description": "Describe the crop here.",
+  "optionalNotes": "Use stable IDs and keep gameplay values in data files."
+}

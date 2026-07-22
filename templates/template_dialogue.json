@@ -1,0 +1,8 @@
+{
+  "id": "dialogue-template",
+  "speaker": "npc-name",
+  "text": "Example dialogue line.",
+  "tone": "neutral",
+  "description": "Describe the dialogue context here.",
+  "optionalNotes": "Keep conversation text in JSON, not in engine logic."
+}

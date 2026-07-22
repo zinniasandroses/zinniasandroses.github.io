@@ -1,0 +1,8 @@
+{
+  "id": "animal-template",
+  "label": "Example Animal",
+  "type": "livestock",
+  "icon": "🐄",
+  "description": "Describe the animal here.",
+  "optionalNotes": "Use stable IDs and keep gameplay values in data files."
+}
