@@ -1,0 +1,10 @@
+[
+  { "id": "sunny", "label": "Sunny", "severity": 0 },
+  { "id": "cloudy", "label": "Cloudy", "severity": 1 },
+  { "id": "rain", "label": "Rain", "severity": 2 },
+  { "id": "storm", "label": "Storm", "severity": 3 },
+  { "id": "heat-wave", "label": "Heat Wave", "severity": 4 },
+  { "id": "snow", "label": "Snow", "severity": 5 },
+  { "id": "blizzard", "label": "Blizzard", "severity": 6 },
+  { "id": "drought", "label": "Drought", "severity": 7 }
+]

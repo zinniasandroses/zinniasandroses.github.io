@@ -1,0 +1,6 @@
+{
+  "minuteStep": 1,
+  "developerModeSpeedMultiplier": 1,
+  "eventCooldownMinutes": 30,
+  "dayLengthMinutes": 20
+}

@@ -1,0 +1,6 @@
+[
+  { "id": "spring", "label": "Spring", "order": 1 },
+  { "id": "summer", "label": "Summer", "order": 2 },
+  { "id": "autumn", "label": "Autumn", "order": 3 },
+  { "id": "winter", "label": "Winter", "order": 4 }
+]

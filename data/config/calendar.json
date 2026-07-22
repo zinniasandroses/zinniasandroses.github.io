@@ -1,0 +1,12 @@
+{
+  "day": 1,
+  "week": 1,
+  "month": 1,
+  "season": "spring",
+  "year": 1,
+  "minutesPerDay": 20,
+  "weekLength": 7,
+  "monthLength": 4,
+  "seasonLength": 4,
+  "yearLength": 12
+}
