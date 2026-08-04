@@ -96,18 +96,19 @@ function mixColors(fromColor, toColor, ratio) {
 
 function applyThemeProgress() {
     const progress = 1 - remainingDayMs / REAL_TIME_DAY_INTERVAL_MS;
+    const easedProgress = Math.pow(Math.max(0, Math.min(1, progress)), 0.6);
 
-    document.documentElement.style.setProperty('--bg', mixColors(LIGHT_THEME.bg, DARK_THEME.bg, progress));
-    document.documentElement.style.setProperty('--panel', mixColors(LIGHT_THEME.panel, DARK_THEME.panel, progress));
-    document.documentElement.style.setProperty('--text', mixColors(LIGHT_THEME.text, DARK_THEME.text, progress));
-    document.documentElement.style.setProperty('--border', mixColors(LIGHT_THEME.border, DARK_THEME.border, progress));
-    document.documentElement.style.setProperty('--accent', mixColors(LIGHT_THEME.accent, DARK_THEME.accent, progress));
-    document.documentElement.style.setProperty('--accent-dark', mixColors(LIGHT_THEME.accentDark, DARK_THEME.accentDark, progress));
-    document.documentElement.style.setProperty('--header-bg', mixColors(LIGHT_THEME.header, DARK_THEME.header, progress));
-    document.documentElement.style.setProperty('--stat-card-bg', mixColors(LIGHT_THEME.statCard, DARK_THEME.statCard, progress));
-    document.documentElement.style.setProperty('--plot-bg', mixColors(LIGHT_THEME.plot, DARK_THEME.plot, progress));
-    document.documentElement.style.setProperty('--plot-empty-bg', mixColors(LIGHT_THEME.plotEmpty, DARK_THEME.plotEmpty, progress));
-    document.documentElement.style.setProperty('--plot-tag-bg', mixColors(LIGHT_THEME.plotTag, DARK_THEME.plotTag, progress));
+    document.documentElement.style.setProperty('--bg', mixColors(LIGHT_THEME.bg, DARK_THEME.bg, easedProgress));
+    document.documentElement.style.setProperty('--panel', mixColors(LIGHT_THEME.panel, DARK_THEME.panel, easedProgress));
+    document.documentElement.style.setProperty('--text', mixColors(LIGHT_THEME.text, DARK_THEME.text, easedProgress));
+    document.documentElement.style.setProperty('--border', mixColors(LIGHT_THEME.border, DARK_THEME.border, easedProgress));
+    document.documentElement.style.setProperty('--accent', mixColors(LIGHT_THEME.accent, DARK_THEME.accent, easedProgress));
+    document.documentElement.style.setProperty('--accent-dark', mixColors(LIGHT_THEME.accentDark, DARK_THEME.accentDark, easedProgress));
+    document.documentElement.style.setProperty('--header-bg', mixColors(LIGHT_THEME.header, DARK_THEME.header, easedProgress));
+    document.documentElement.style.setProperty('--stat-card-bg', mixColors(LIGHT_THEME.statCard, DARK_THEME.statCard, easedProgress));
+    document.documentElement.style.setProperty('--plot-bg', mixColors(LIGHT_THEME.plot, DARK_THEME.plot, easedProgress));
+    document.documentElement.style.setProperty('--plot-empty-bg', mixColors(LIGHT_THEME.plotEmpty, DARK_THEME.plotEmpty, easedProgress));
+    document.documentElement.style.setProperty('--plot-tag-bg', mixColors(LIGHT_THEME.plotTag, DARK_THEME.plotTag, easedProgress));
 }
 
 function formatCountdown(remainingMs) {
