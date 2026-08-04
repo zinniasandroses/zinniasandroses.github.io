@@ -16,6 +16,9 @@ const INITIAL_PLOT_COUNT = 6;
 const MAX_PLOTS = 30;
 const EXPANSION_COST = 12;
 const CINAT_PER_ARIM = 100;
+const REAL_TIME_DAY_INTERVAL_MS = 30 * 60 * 1000;
+
+setInterval(advanceDay, REAL_TIME_DAY_INTERVAL_MS);
 
 const defaultState = {
     money: 20,
@@ -77,7 +80,7 @@ const inventoryList = document.getElementById('inventoryList');
 
 const plantButton = document.getElementById('plantButton');
 const harvestButton = document.getElementById('harvestButton');
-const nextDayButton = document.getElementById('nextDayButton');
+//const nextDayButton = document.getElementById('nextDayButton');
 const expandButton = document.getElementById('expandButton');
 const forageButton = document.getElementById('forageButton');
 const saveButton = document.getElementById('saveButton');
@@ -299,7 +302,7 @@ seedSelect.addEventListener('change', (event) => {
 
 plantButton.addEventListener('click', plantSelectedCrop);
 harvestButton.addEventListener('click', harvestSelectedCrop);
-nextDayButton.addEventListener('click', advanceDay);
+// nextDayButton.addEventListener('click', advanceDay);
 expandButton.addEventListener('click', expandFarm);
 forageButton.addEventListener('click', forageSeeds);
 saveButton.addEventListener('click', () => {
