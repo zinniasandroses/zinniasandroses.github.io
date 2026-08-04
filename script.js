@@ -15,7 +15,7 @@ const STORAGE_KEY = 'garden_survival_save';
 const INITIAL_PLOT_COUNT = 6;
 const MAX_PLOTS = 30;
 const EXPANSION_COST = 12;
-const CINAT_PER_ARIM = 5;
+const CINAT_PER_ARIM = 100;
 
 const defaultState = {
     money: 20,
