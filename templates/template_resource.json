@@ -1,0 +1,23 @@
+{
+  "id": "resource-template",
+  "label": "Example Resource",
+  "internalName": "example_resource",
+  "category": "resource",
+  "description": "Describe the resource here.",
+  "minimum": 0,
+  "maximum": 100,
+  "current": 10,
+  "regeneration": 0,
+  "consumption": 0,
+  "metadata": {
+    "origin": "template",
+    "localizationReady": true,
+    "assetReference": "template-resource"
+  },
+  "events": ["resource-updated"],
+  "serialization": {
+    "version": 1,
+    "storage": "resource-bucket"
+  },
+  "tags": ["resource", "template", "localization-ready"]
+}

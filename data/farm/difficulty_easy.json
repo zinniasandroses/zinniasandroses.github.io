@@ -1,0 +1,20 @@
+{
+  "id": "difficulty-easy",
+  "label": "Easy",
+  "description": "Relaxed farm challenge profile.",
+  "difficultyMultipliers": {
+    "income": 1.1,
+    "expense": 0.9,
+    "stress": 0.8,
+    "weather": 0.9,
+    "population": 1
+  },
+  "startingResources": {
+    "money": 28,
+    "reputation": 5,
+    "water": 80,
+    "fuel": 25
+  },
+  "startingAcreage": 25,
+  "startingEquipment": []
+}

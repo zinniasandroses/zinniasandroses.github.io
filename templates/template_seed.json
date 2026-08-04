@@ -1,0 +1,23 @@
+{
+  "id": "seed-template",
+  "label": "Example Seed",
+  "internalName": "example_seed",
+  "category": "seed",
+  "subcategory": "crop-seed",
+  "description": "Describe the seed here.",
+  "icon": "🌱",
+  "stackSize": 12,
+  "weight": 0.1,
+  "value": 2,
+  "sellable": true,
+  "purchasable": true,
+  "tradable": true,
+  "spoilable": false,
+  "metadata": {
+    "origin": "template",
+    "localizationReady": true,
+    "assetReference": "template-seed"
+  },
+  "tags": ["seed", "template", "localization-ready"],
+  "futureComponents": []
+}

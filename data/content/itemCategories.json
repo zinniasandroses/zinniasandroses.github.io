@@ -1,0 +1,19 @@
+[
+  { "id": "crop", "label": "Crop", "description": "A plant-based item category.", "parentCategory": "item" },
+  { "id": "seed", "label": "Seed", "description": "A seed item category.", "parentCategory": "item" },
+  { "id": "animal-product", "label": "Animal Product", "description": "Products derived from animals.", "parentCategory": "item" },
+  { "id": "food", "label": "Food", "description": "Consumable food items.", "parentCategory": "item" },
+  { "id": "building-material", "label": "Building Material", "description": "Materials for structures.", "parentCategory": "item" },
+  { "id": "fuel", "label": "Fuel", "description": "Items that power machinery or heating.", "parentCategory": "item" },
+  { "id": "medicine", "label": "Medicine", "description": "Healing or medical support items.", "parentCategory": "item" },
+  { "id": "tool", "label": "Tool", "description": "Utility devices used by players or systems.", "parentCategory": "item" },
+  { "id": "equipment", "label": "Equipment", "description": "Equippable or wearable gear.", "parentCategory": "item" },
+  { "id": "decoration", "label": "Decoration", "description": "World decor and aesthetic items.", "parentCategory": "item" },
+  { "id": "machine-part", "label": "Machine Part", "description": "Parts used in machines and upgrades.", "parentCategory": "item" },
+  { "id": "crafting-material", "label": "Crafting Material", "description": "Reusable crafting ingredients.", "parentCategory": "item" },
+  { "id": "quest-item", "label": "Quest Item", "description": "Story or progress-linked item category.", "parentCategory": "item" },
+  { "id": "fish", "label": "Fish", "description": "Fish and fish-derived content.", "parentCategory": "item" },
+  { "id": "tree-product", "label": "Tree Product", "description": "Products drawn from trees and forestry.", "parentCategory": "item" },
+  { "id": "ore", "label": "Ore", "description": "Mineral resources and metals.", "parentCategory": "item" },
+  { "id": "miscellaneous", "label": "Miscellaneous", "description": "General fallback category.", "parentCategory": "item" }
+]

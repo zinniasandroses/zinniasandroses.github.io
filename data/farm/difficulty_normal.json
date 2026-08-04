@@ -1,0 +1,20 @@
+{
+  "id": "difficulty-normal",
+  "label": "Normal",
+  "description": "Baseline farm challenge profile.",
+  "difficultyMultipliers": {
+    "income": 1,
+    "expense": 1,
+    "stress": 1,
+    "weather": 1,
+    "population": 1
+  },
+  "startingResources": {
+    "money": 20,
+    "reputation": 0,
+    "water": 60,
+    "fuel": 20
+  },
+  "startingAcreage": 25,
+  "startingEquipment": []
+}

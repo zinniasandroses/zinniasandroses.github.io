@@ -1,1 +1,71 @@
-[]
+[
+  {
+    "id": "item-seed-carrot",
+    "label": "Carrot Seed",
+    "internalName": "carrot_seed",
+    "category": "seed",
+    "subcategory": "crop-seed",
+    "description": "Starter crop seed definition used for future item registry loading.",
+    "icon": "🌱",
+    "stackSize": 12,
+    "weight": 0.1,
+    "value": 2,
+    "sellable": true,
+    "purchasable": true,
+    "tradable": true,
+    "spoilable": false,
+    "metadata": {
+      "origin": "starter-content",
+      "localizationReady": true,
+      "assetReference": "seed-carrot"
+    },
+    "tags": ["crop", "seed", "starter", "localization-ready"],
+    "futureComponents": ["seed-packet"]
+  },
+  {
+    "id": "item-seed-tomato",
+    "label": "Tomato Seed",
+    "internalName": "tomato_seed",
+    "category": "seed",
+    "subcategory": "crop-seed",
+    "description": "Starter crop seed definition used for future item registry loading.",
+    "icon": "🌿",
+    "stackSize": 12,
+    "weight": 0.1,
+    "value": 3,
+    "sellable": true,
+    "purchasable": true,
+    "tradable": true,
+    "spoilable": false,
+    "metadata": {
+      "origin": "starter-content",
+      "localizationReady": true,
+      "assetReference": "seed-tomato"
+    },
+    "tags": ["crop", "seed", "starter", "localization-ready"],
+    "futureComponents": ["seed-packet"]
+  },
+  {
+    "id": "item-harvest-carrot",
+    "label": "Carrot",
+    "internalName": "carrot_harvest",
+    "category": "crop",
+    "subcategory": "harvest",
+    "description": "Starter harvest item definition used for future inventory and trade architecture.",
+    "icon": "🥕",
+    "stackSize": 20,
+    "weight": 0.2,
+    "value": 5,
+    "sellable": true,
+    "purchasable": false,
+    "tradable": true,
+    "spoilable": false,
+    "metadata": {
+      "origin": "starter-content",
+      "localizationReady": true,
+      "assetReference": "crop-carrot"
+    },
+    "tags": ["crop", "harvest", "starter", "localization-ready"],
+    "futureComponents": ["crop-bundle"]
+  }
+]

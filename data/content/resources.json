@@ -1,1 +1,117 @@
-[]
+[
+  {
+    "id": "resource-arim",
+    "label": "Arim",
+    "internalName": "arim",
+    "category": "currency",
+    "description": "Primary large-unit currency.",
+    "minimum": 0,
+    "maximum": 999999,
+    "current": 0,
+    "regeneration": 0,
+    "consumption": 0,
+    "metadata": {
+      "origin": "starter-content",
+      "localizationReady": true,
+      "assetReference": "currency-arim"
+    },
+    "events": ["currency-updated"],
+    "serialization": {
+      "version": 1,
+      "storage": "resource-bucket"
+    },
+    "tags": ["currency", "starter", "localization-ready"]
+  },
+  {
+    "id": "resource-cinat",
+    "label": "Cinat",
+    "internalName": "cinat",
+    "category": "currency",
+    "description": "Primary small-unit currency.",
+    "minimum": 0,
+    "maximum": 999999,
+    "current": 0,
+    "regeneration": 0,
+    "consumption": 0,
+    "metadata": {
+      "origin": "starter-content",
+      "localizationReady": true,
+      "assetReference": "currency-cinat"
+    },
+    "events": ["currency-updated"],
+    "serialization": {
+      "version": 1,
+      "storage": "resource-bucket"
+    },
+    "tags": ["currency", "starter", "localization-ready"]
+  },
+  {
+    "id": "resource-reputation",
+    "label": "Reputation",
+    "internalName": "reputation",
+    "category": "reputation",
+    "description": "Starter social standing resource.",
+    "minimum": 0,
+    "maximum": 100,
+    "current": 10,
+    "regeneration": 0,
+    "consumption": 0,
+    "metadata": {
+      "origin": "starter-content",
+      "localizationReady": true,
+      "assetReference": "resource-reputation"
+    },
+    "events": ["reputation-updated"],
+    "serialization": {
+      "version": 1,
+      "storage": "resource-bucket"
+    },
+    "tags": ["resource", "starter", "localization-ready"]
+  },
+  {
+    "id": "resource-water",
+    "label": "Water",
+    "internalName": "water",
+    "category": "water",
+    "description": "Starter water reserve resource.",
+    "minimum": 0,
+    "maximum": 200,
+    "current": 50,
+    "regeneration": 0,
+    "consumption": 0,
+    "metadata": {
+      "origin": "starter-content",
+      "localizationReady": true,
+      "assetReference": "resource-water"
+    },
+    "events": ["water-updated"],
+    "serialization": {
+      "version": 1,
+      "storage": "resource-bucket"
+    },
+    "tags": ["resource", "starter", "localization-ready"]
+  },
+  {
+    "id": "resource-fuel",
+    "label": "Fuel",
+    "internalName": "fuel",
+    "category": "fuel",
+    "description": "Starter machine fuel reserve resource.",
+    "minimum": 0,
+    "maximum": 100,
+    "current": 25,
+    "regeneration": 0,
+    "consumption": 0,
+    "metadata": {
+      "origin": "starter-content",
+      "localizationReady": true,
+      "assetReference": "resource-fuel"
+    },
+    "events": ["fuel-updated"],
+    "serialization": {
+      "version": 1,
+      "storage": "resource-bucket"
+    },
+    "tags": ["resource", "starter", "fuel", "localization-ready"]
+  }
+]

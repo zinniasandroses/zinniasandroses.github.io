@@ -1,0 +1,23 @@
+{
+  "id": "item-template",
+  "label": "Example Item",
+  "internalName": "example_item",
+  "category": "miscellaneous",
+  "subcategory": "general",
+  "description": "Describe the item here.",
+  "icon": "🧰",
+  "stackSize": 10,
+  "weight": 1,
+  "value": 5,
+  "sellable": true,
+  "purchasable": false,
+  "tradable": true,
+  "spoilable": false,
+  "metadata": {
+    "origin": "template",
+    "localizationReady": true,
+    "assetReference": "template-item"
+  },
+  "tags": ["template", "localization-ready"],
+  "futureComponents": []
+}

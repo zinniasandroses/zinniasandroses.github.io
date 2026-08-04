@@ -13,6 +13,27 @@ Schemas provide a shared validation contract for data-driven content.
 - skill.schema.json
 - resource.schema.json
 - item.schema.json
+- currency.schema.json
+- item-category.schema.json
+
+## Item and resource validation requirements
+Item and resource definitions must validate the following fields before runtime registration:
+- required identity fields such as `id`, `label`, and `internalName`
+- category and subcategory metadata
+- weight and stack size constraints
+- tags for future localization and search support
+- asset reference metadata
+- localization readiness metadata
+- currency conversion metadata where applicable
+
+## Farm validation requirements
+Farm JSON should validate:
+- stable farm ID and owner metadata
+- acreage and capacity bounds
+- default resource state
+- current season and weather assignment
+- difficulty profile mapping
+- serialization compatibility metadata
 
 ## Validation rule
 All content should be validated before being registered into a runtime registry.

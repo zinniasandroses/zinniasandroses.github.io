@@ -38,6 +38,32 @@ This document is the permanent encyclopedia for the project. It defines the shar
 - animals
 - reputation
 - items
+- water
+- electricity
+- storage capacity
+
+## Universal item model
+The universal item model is data-driven and keeps generic fields in one place. Every item stores a stable ID, display name, internal name, category, subcategory, description, icon, stack size, weight, value, and sale/trade metadata.
+
+## Resource model
+Resources are not inventory items. They represent bounded or regenerating systems such as money, reputation, fuel reserves, electricity, water storage, storage capacity, and future government credits.
+
+## Currency architecture
+The game's currencies are modeled by data definitions that keep conversion rules out of engine code. The conversion path always resolves through the currency registry and the configured conversion metadata.
+
+## Farm architecture
+- The farm is the permanent first-class simulation object for the player.
+- Everything in the game is expected to belong to a farm. The farm owns the player’s identity, active simulation state, parcel ownership, capacity profile, and resource profile.
+- The farm object intentionally stays separate from the active gameplay UI.
+
+## Farm states
+Temporary farm states such as drought, flood, economic boom, recession, wildfire recovery, and storm damage should be represented as modifiers only for now.
+
+## Resource flow
+Farm-wide resources such as money, water, fuel, power, building capacity, animal capacity, storage capacity, population, and employees are stored separately from inventory stacks.
+
+## Expansion framework
+Expansion remains parcel-based and should simply attach more land to the farm through the ownership and expansion services.
 
 ## Future extension principles
 - Registries should not contain gameplay logic.

@@ -1,0 +1,19 @@
+{
+  "id": "resource-defaults",
+  "label": "Farm Resource Defaults",
+  "description": "Starter farm-wide resource defaults used to configure a new farm object.",
+  "defaults": {
+    "money": 20,
+    "arim": 0,
+    "cinat": 0,
+    "reputation": 0,
+    "water": 60,
+    "fuel": 20,
+    "power": 0,
+    "animalCapacity": 0,
+    "buildingCapacity": 0,
+    "storageCapacity": 40,
+    "population": 1,
+    "employees": 0
+  }
+}
