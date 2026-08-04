@@ -4,7 +4,7 @@ import { createSimulationManager } from './src/simulation/SimulationManager.js';
 import { createWorldManager } from './src/world/systems/WorldManager.js';
 
 const SEED_DATA = {
-    carrot: { label: 'Carrot', price: 2, growthTime: 2, sellPrice: 5, icon: '🥕' },
+    carrot: { label: 'carrot', price: 2, growthTime: 2, sellPrice: 5, icon: '🥕' },
     tomato: { label: 'Tomato', price: 3, growthTime: 3, sellPrice: 8, icon: '🍅' },
     corn: { label: 'Corn', price: 2, growthTime: 2, sellPrice: 7, icon: '🌽' },
     lettuce: { label: 'Lettuce', price: 2, growthTime: 2, sellPrice: 6, icon: '🥬' },
