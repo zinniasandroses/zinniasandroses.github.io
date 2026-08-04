@@ -19,6 +19,7 @@ const CINAT_PER_ARIM = 100;
 const REAL_TIME_DAY_INTERVAL_MS = 30 * 60 * 1000;
 const SPEEDUP_FACTOR = 60;
 const SPEEDUP_THRESHOLD_MS = 5 * 1000;
+const SUNSET_WINDOW_MS = 5 * 60 * 1000;
 
 const LIGHT_THEME = {
     bg: '#f8f4e6',
@@ -55,6 +56,7 @@ let countdownUpdater = null;
 
 const countdownDisplay = document.getElementById('countdownDisplay');
 const speedUpTimerCheckbox = document.getElementById('speedUpTimerCheckbox');
+const sunsetOverlay = document.getElementById('sunsetOverlay');
 
 function parseColorValue(colorValue) {
     if (colorValue.startsWith('#')) {
@@ -97,6 +99,9 @@ function mixColors(fromColor, toColor, ratio) {
 function applyThemeProgress() {
     const progress = 1 - remainingDayMs / REAL_TIME_DAY_INTERVAL_MS;
     const easedProgress = Math.pow(Math.max(0, Math.min(1, progress)), 0.6);
+    const sunsetProgress = remainingDayMs <= SUNSET_WINDOW_MS
+        ? Math.max(0, Math.min(1, 1 - (remainingDayMs / SUNSET_WINDOW_MS)))
+        : 0;
 
     document.documentElement.style.setProperty('--bg', mixColors(LIGHT_THEME.bg, DARK_THEME.bg, easedProgress));
     document.documentElement.style.setProperty('--panel', mixColors(LIGHT_THEME.panel, DARK_THEME.panel, easedProgress));
@@ -109,6 +114,7 @@ function applyThemeProgress() {
     document.documentElement.style.setProperty('--plot-bg', mixColors(LIGHT_THEME.plot, DARK_THEME.plot, easedProgress));
     document.documentElement.style.setProperty('--plot-empty-bg', mixColors(LIGHT_THEME.plotEmpty, DARK_THEME.plotEmpty, easedProgress));
     document.documentElement.style.setProperty('--plot-tag-bg', mixColors(LIGHT_THEME.plotTag, DARK_THEME.plotTag, easedProgress));
+    sunsetOverlay.style.opacity = String(sunsetProgress * 0.9);
 }
 
 function formatCountdown(remainingMs) {
