@@ -18,7 +18,36 @@ const EXPANSION_COST = 12;
 const CINAT_PER_ARIM = 100;
 const REAL_TIME_DAY_INTERVAL_MS = 30 * 60 * 1000;
 
+let countdownDeadline = Date.now() + REAL_TIME_DAY_INTERVAL_MS;
+let countdownUpdater = null;
+
+const countdownDisplay = document.getElementById('countdownDisplay');
+
+function formatCountdown(remainingMs) {
+    const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
+    const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+    const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+    const seconds = String(totalSeconds % 60).padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+}
+
+function updateCountdownDisplay() {
+    countdownDisplay.textContent = formatCountdown(countdownDeadline - Date.now());
+}
+
+function startCountdownTimer() {
+    if (countdownUpdater) {
+        clearInterval(countdownUpdater);
+    }
+
+    countdownUpdater = setInterval(() => {
+        updateCountdownDisplay();
+    }, 1000);
+}
+
 setInterval(advanceDay, REAL_TIME_DAY_INTERVAL_MS);
+startCountdownTimer();
+updateCountdownDisplay();
 
 const defaultState = {
     money: 20,
@@ -242,6 +271,7 @@ function forageSeeds() {
 
 function advanceDay() {
     state.day += 1;
+    countdownDeadline = Date.now() + REAL_TIME_DAY_INTERVAL_MS;
 
     state.plots.forEach((plot) => {
         if (!plot.crop) {
@@ -258,6 +288,7 @@ function advanceDay() {
         simulation: simulationManager.getState(),
         world: worldManager.getGrid()
     });
+    updateCountdownDisplay();
     render();
 }
 
