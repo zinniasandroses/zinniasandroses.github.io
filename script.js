@@ -17,11 +17,16 @@ const MAX_PLOTS = 30;
 const EXPANSION_COST = 12;
 const CINAT_PER_ARIM = 100;
 const REAL_TIME_DAY_INTERVAL_MS = 30 * 60 * 1000;
+const SPEEDUP_FACTOR = 60;
+const SPEEDUP_THRESHOLD_MS = 5 * 1000;
 
-let countdownDeadline = Date.now() + REAL_TIME_DAY_INTERVAL_MS;
+let remainingDayMs = REAL_TIME_DAY_INTERVAL_MS;
+let lastDayTick = Date.now();
+let isSpeedupMode = false;
 let countdownUpdater = null;
 
 const countdownDisplay = document.getElementById('countdownDisplay');
+const speedUpTimerCheckbox = document.getElementById('speedUpTimerCheckbox');
 
 function formatCountdown(remainingMs) {
     const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
@@ -32,7 +37,28 @@ function formatCountdown(remainingMs) {
 }
 
 function updateCountdownDisplay() {
-    countdownDisplay.textContent = formatCountdown(countdownDeadline - Date.now());
+    countdownDisplay.textContent = formatCountdown(remainingDayMs);
+}
+
+function tickDayCycle() {
+    const now = Date.now();
+    const elapsedMs = now - lastDayTick;
+    lastDayTick = now;
+
+    if (isSpeedupMode && remainingDayMs > SPEEDUP_THRESHOLD_MS) {
+        remainingDayMs = Math.max(SPEEDUP_THRESHOLD_MS, remainingDayMs - (elapsedMs * SPEEDUP_FACTOR));
+    } else {
+        remainingDayMs = Math.max(0, remainingDayMs - elapsedMs);
+    }
+
+    updateCountdownDisplay();
+
+    if (remainingDayMs <= 0) {
+        advanceDay();
+        remainingDayMs = REAL_TIME_DAY_INTERVAL_MS;
+        lastDayTick = Date.now();
+        updateCountdownDisplay();
+    }
 }
 
 function startCountdownTimer() {
@@ -40,12 +66,9 @@ function startCountdownTimer() {
         clearInterval(countdownUpdater);
     }
 
-    countdownUpdater = setInterval(() => {
-        updateCountdownDisplay();
-    }, 1000);
+    countdownUpdater = setInterval(tickDayCycle, 1000);
 }
 
-setInterval(advanceDay, REAL_TIME_DAY_INTERVAL_MS);
 startCountdownTimer();
 updateCountdownDisplay();
 
@@ -271,7 +294,8 @@ function forageSeeds() {
 
 function advanceDay() {
     state.day += 1;
-    countdownDeadline = Date.now() + REAL_TIME_DAY_INTERVAL_MS;
+    remainingDayMs = REAL_TIME_DAY_INTERVAL_MS;
+    lastDayTick = Date.now();
 
     state.plots.forEach((plot) => {
         if (!plot.crop) {
@@ -329,6 +353,15 @@ function resetGame() {
 seedSelect.addEventListener('change', (event) => {
     state.selectedSeed = event.target.value;
     saveState();
+});
+
+speedUpTimerCheckbox.addEventListener('change', (event) => {
+    isSpeedupMode = event.target.checked;
+
+    if (isSpeedupMode && remainingDayMs <= SPEEDUP_THRESHOLD_MS) {
+        isSpeedupMode = false;
+        event.target.checked = false;
+    }
 });
 
 plantButton.addEventListener('click', plantSelectedCrop);

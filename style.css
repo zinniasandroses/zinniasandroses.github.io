@@ -190,6 +190,27 @@ button.danger {
     background: #f2ecd4;
 }
 
+.speedup-control {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 10;
+    padding: 0.7rem 0.85rem;
+    border-radius: 12px;
+    background: rgba(35, 79, 43, 0.94);
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.speedup-control label {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
 footer {
     text-align: center;
     padding: 0.75rem 1rem 1.5rem;
