@@ -20,6 +20,34 @@ const REAL_TIME_DAY_INTERVAL_MS = 30 * 60 * 1000;
 const SPEEDUP_FACTOR = 60;
 const SPEEDUP_THRESHOLD_MS = 5 * 1000;
 
+const LIGHT_THEME = {
+    bg: '#f8f4e6',
+    panel: '#fffdf4',
+    text: '#1f2a1f',
+    border: '#d6cab1',
+    accent: '#3e7c43',
+    accentDark: '#29522d',
+    header: '#234f2b',
+    statCard: 'rgba(255, 255, 255, 0.16)',
+    plot: '#d8e7c6',
+    plotEmpty: '#f2ecd4',
+    plotTag: 'rgba(30, 67, 38, 0.15)'
+};
+
+const DARK_THEME = {
+    bg: '#171b22',
+    panel: '#262d36',
+    text: '#f2f6f8',
+    border: '#4a545f',
+    accent: '#94c98a',
+    accentDark: '#5f8c63',
+    header: '#0d1117',
+    statCard: 'rgba(0, 0, 0, 0.26)',
+    plot: '#33433d',
+    plotEmpty: '#2b3439',
+    plotTag: 'rgba(192, 224, 199, 0.16)'
+};
+
 let remainingDayMs = REAL_TIME_DAY_INTERVAL_MS;
 let lastDayTick = Date.now();
 let isSpeedupMode = false;
@@ -27,6 +55,60 @@ let countdownUpdater = null;
 
 const countdownDisplay = document.getElementById('countdownDisplay');
 const speedUpTimerCheckbox = document.getElementById('speedUpTimerCheckbox');
+
+function parseColorValue(colorValue) {
+    if (colorValue.startsWith('#')) {
+        const fullHex = colorValue.replace('#', '');
+        const normalized = fullHex.length === 3
+            ? fullHex.split('').map((char) => char + char).join('')
+            : fullHex;
+
+        return {
+            r: Number.parseInt(normalized.slice(0, 2), 16),
+            g: Number.parseInt(normalized.slice(2, 4), 16),
+            b: Number.parseInt(normalized.slice(4, 6), 16)
+        };
+    }
+
+    const match = colorValue.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+    if (match) {
+        return {
+            r: Number(match[1]),
+            g: Number(match[2]),
+            b: Number(match[3])
+        };
+    }
+
+    return { r: 0, g: 0, b: 0 };
+}
+
+function mixColors(fromColor, toColor, ratio) {
+    const from = parseColorValue(fromColor);
+    const to = parseColorValue(toColor);
+    const amount = Math.max(0, Math.min(1, ratio));
+
+    const r = Math.round(from.r + (to.r - from.r) * amount);
+    const g = Math.round(from.g + (to.g - from.g) * amount);
+    const b = Math.round(from.b + (to.b - from.b) * amount);
+
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+function applyThemeProgress() {
+    const progress = 1 - remainingDayMs / REAL_TIME_DAY_INTERVAL_MS;
+
+    document.documentElement.style.setProperty('--bg', mixColors(LIGHT_THEME.bg, DARK_THEME.bg, progress));
+    document.documentElement.style.setProperty('--panel', mixColors(LIGHT_THEME.panel, DARK_THEME.panel, progress));
+    document.documentElement.style.setProperty('--text', mixColors(LIGHT_THEME.text, DARK_THEME.text, progress));
+    document.documentElement.style.setProperty('--border', mixColors(LIGHT_THEME.border, DARK_THEME.border, progress));
+    document.documentElement.style.setProperty('--accent', mixColors(LIGHT_THEME.accent, DARK_THEME.accent, progress));
+    document.documentElement.style.setProperty('--accent-dark', mixColors(LIGHT_THEME.accentDark, DARK_THEME.accentDark, progress));
+    document.documentElement.style.setProperty('--header-bg', mixColors(LIGHT_THEME.header, DARK_THEME.header, progress));
+    document.documentElement.style.setProperty('--stat-card-bg', mixColors(LIGHT_THEME.statCard, DARK_THEME.statCard, progress));
+    document.documentElement.style.setProperty('--plot-bg', mixColors(LIGHT_THEME.plot, DARK_THEME.plot, progress));
+    document.documentElement.style.setProperty('--plot-empty-bg', mixColors(LIGHT_THEME.plotEmpty, DARK_THEME.plotEmpty, progress));
+    document.documentElement.style.setProperty('--plot-tag-bg', mixColors(LIGHT_THEME.plotTag, DARK_THEME.plotTag, progress));
+}
 
 function formatCountdown(remainingMs) {
     const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
@@ -38,6 +120,7 @@ function formatCountdown(remainingMs) {
 
 function updateCountdownDisplay() {
     countdownDisplay.textContent = formatCountdown(remainingDayMs);
+    applyThemeProgress();
 }
 
 function tickDayCycle() {
@@ -70,6 +153,7 @@ function startCountdownTimer() {
 }
 
 startCountdownTimer();
+applyThemeProgress();
 updateCountdownDisplay();
 
 const defaultState = {
@@ -296,6 +380,8 @@ function advanceDay() {
     state.day += 1;
     remainingDayMs = REAL_TIME_DAY_INTERVAL_MS;
     lastDayTick = Date.now();
+    isSpeedupMode = false;
+    speedUpTimerCheckbox.checked = false;
 
     state.plots.forEach((plot) => {
         if (!plot.crop) {

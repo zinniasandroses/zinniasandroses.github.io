@@ -1,11 +1,16 @@
 :root {
     color-scheme: light;
-    --bg: #f5f1df;
+    --bg: #f8f4e6;
     --panel: #fffdf4;
     --accent: #3e7c43;
     --accent-dark: #29522d;
     --text: #1f2a1f;
     --border: #d6cab1;
+    --header-bg: #234f2b;
+    --stat-card-bg: #ffffff;
+    --plot-bg: #d8e7c6;
+    --plot-empty-bg: #f2ecd4;
+    --plot-tag-bg: #d5e3c7;
     --shadow: 0 12px 28px rgba(58, 84, 48, 0.15);
 }
 
@@ -16,8 +21,9 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(180deg, #f8f4e6, #edf6e6 100%);
+    background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 75%, white) 100%);
     color: var(--text);
+    transition: background 600ms ease, color 600ms ease;
 }
 
 .topbar {
@@ -26,8 +32,9 @@ body {
     align-items: center;
     gap: 1rem;
     padding: 1.25rem 1.5rem;
-    background: #234f2b;
+    background: var(--header-bg);
     color: white;
+    transition: background 600ms ease;
 }
 
 .eyebrow {
@@ -51,8 +58,9 @@ h1, h2, h3, p {
     min-width: 90px;
     padding: 0.65rem 0.9rem;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.16);
+    background: var(--stat-card-bg);
     text-align: center;
+    transition: background 600ms ease, color 600ms ease;
 }
 
 #countdownDisplay {
@@ -86,6 +94,7 @@ h1, h2, h3, p {
     border-radius: 16px;
     padding: 1rem;
     box-shadow: var(--shadow);
+    transition: background 600ms ease, border-color 600ms ease, color 600ms ease;
 }
 
 .controls label,
@@ -157,9 +166,9 @@ button.danger {
     padding: 0.8rem;
     border-radius: 14px;
     border: 2px solid #b9c6aa;
-    background: #d8e7c6;
+    background: var(--plot-bg);
     cursor: pointer;
-    transition: transform 120ms ease, box-shadow 120ms ease;
+    transition: transform 120ms ease, box-shadow 120ms ease, background 600ms ease;
 }
 
 .plot.selected {
@@ -182,12 +191,12 @@ button.danger {
     margin-top: 0.5rem;
     padding: 0.2rem 0.45rem;
     border-radius: 999px;
-    background: rgba(30, 67, 38, 0.15);
+    background: var(--plot-tag-bg);
     font-size: 0.78rem;
 }
 
 .plot.empty {
-    background: #f2ecd4;
+    background: var(--plot-empty-bg);
 }
 
 .speedup-control {
