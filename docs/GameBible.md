@@ -71,11 +71,26 @@ Expansion remains parcel-based and should simply attach more land to the farm th
 - Content should be loadable without engine code changes.
 
 ## World architecture
-- The world is organized through a shared `WorldManager` that owns generation, chunk loading, regions, farm boundaries, and placement structure.
+- The world is organized through a shared `WorldManager` that owns generation, chunk loading, regions, farm boundaries, placement structure, and the new tile-first simulation foundation.
 - The player's farm begins at 25 acres and is designed for future expansion through adjacent parcels.
-- The world is parcel-based and data-driven.
+- The world remains data-driven and extends from the world manager through modular grid, terrain, soil, and object systems.
 - Every world object uses a common object definition with stable IDs, position, owner, data definition, interaction rules, and save payload.
 - Save data records deltas rather than full-map snapshots.
+
+## Land and tile simulation
+The permanent grid system is the structural backbone for all future farming systems. It provides tile coordinates, world coordinates, chunk-based save boundaries, and a stable tile data contract that will be consumed by crop, building, animal, road, fence, and utility systems later.
+
+## Terrain system
+Terrains are data-driven and registry-backed. The terrain content model supports grass, dirt, farmland, forest, pond, river, road, rock, and wetland as starters, with future rule-driven terrain types loaded from JSON.
+
+## Soil framework
+The soil framework stores each tile's soil chemistry and physical state, including organic matter, nitrogen, phosphorus, potassium, compaction, acidity, water saturation, temperature, weed pressure, and disease risk. These values are stored and updated now and remain inert until gameplay effects are designed.
+
+## Object layer
+The object layer is tile-aware and supports trees, buildings, decorations, rocks, fences, machines, animals, crop plots, roads, utilities, and future underground utility connections. Objects register through the shared world boundary and emit tile lifecycle events.
+
+## Pathfinding foundation
+A non-optimized but future-ready generic pathfinding service is present so movement routing can later support players, animals, farmhands, neighbors, and vehicles.
 
 ## Parcel model
 Every parcel stores ownership, terrain, moisture, fertility, drainage, water access, and future land usage.

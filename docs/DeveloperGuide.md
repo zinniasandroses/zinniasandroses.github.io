@@ -81,5 +81,20 @@ Each world object should be modeled with:
 - interaction rules
 - save payload
 
+## Land and tile simulation architecture
+- `GridSystem` is the persistent tile-first map foundation.
+- `TileDefinition` holds the universal per-tile data contract.
+- `TerrainRegistry` stores terrain data as loadable JSON content.
+- `PathfindingService` provides a generic movement interface that is future-proof for players, animals, farmhands, neighbors, and vehicles.
+- `WorldManager` now orchestrates the grid, terrain catalog, pathfinding service, and broader world-snapshot surfaces.
+
+## Developer mode expansion
+Use the new developer panels for the next-tier world inspection layer:
+- `TileInspectorPanel`
+- `SoilInspectorPanel`
+- `TerrainPainterPanel` (disabled placeholder)
+- `PathfindingOverlayPanel`
+- `ChunkViewerPanel`
+
 ## Save strategy
 World saves store changes, not the whole map. Keep delta-based world edits in the save layer for efficiency and future compatibility.

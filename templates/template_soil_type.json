@@ -1,0 +1,15 @@
+{
+  "id": "soil-loam",
+  "label": "Loam",
+  "description": "Balanced soil with good drainage and fertility.",
+  "organicMatter": 4,
+  "nitrogen": 3,
+  "phosphorus": 2,
+  "potassium": 2,
+  "compaction": 1,
+  "acidity": 6.5,
+  "waterSaturation": 4,
+  "temperature": 20,
+  "weedPressure": 1,
+  "diseaseRisk": 1
+}

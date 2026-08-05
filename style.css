@@ -5,6 +5,7 @@
     --accent: #3e7c43;
     --accent-dark: #29522d;
     --text: #1f2a1f;
+    --muted-text: #5f654a;
     --border: #d6cab1;
     --header-bg: #234f2b;
     --stat-card-bg: #ffffff;
@@ -74,8 +75,13 @@ h1, h2, h3, p {
     padding: 0.65rem 0.9rem;
     border-radius: 12px;
     background: var(--stat-card-bg);
+    color: var(--text);
     text-align: center;
     transition: background 600ms ease, color 600ms ease;
+}
+
+.stat-card strong {
+    color: var(--text);
 }
 
 #countdownDisplay {
@@ -93,7 +99,7 @@ h1, h2, h3, p {
 .small-note {
     margin-bottom: 0.75rem;
     font-size: 0.85rem;
-    color: #5f654a;
+    color: var(--muted-text);
 }
 
 .game-layout {

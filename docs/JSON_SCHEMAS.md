@@ -35,6 +35,15 @@ Farm JSON should validate:
 - difficulty profile mapping
 - serialization compatibility metadata
 
+## Land simulation content requirements
+The terrain and tile pipeline should validate:
+- stable terrain IDs and labels
+- movement and buildability metadata
+- tile coordinate and world coordinate compatibility
+- soil chemistry values for storage-only simulation state
+- biome membership and terrain tags
+- future placement and utility metadata
+
 ## Validation rule
 All content should be validated before being registered into a runtime registry.
 

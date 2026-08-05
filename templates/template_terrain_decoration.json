@@ -1,0 +1,11 @@
+{
+  "id": "terrain-decoration-hedge",
+  "label": "Hedge",
+  "type": "decoration",
+  "terrainType": "grass",
+  "placementRules": {
+    "buildable": false,
+    "walkable": true
+  },
+  "description": "A low-cost decorative object layer for field edges."
+}

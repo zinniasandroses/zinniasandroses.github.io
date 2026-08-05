@@ -1,0 +1,10 @@
+{
+  "id": "tile-plain-field",
+  "label": "Plain Field Tile",
+  "terrainType": "grass",
+  "soilType": "loam",
+  "visibility": "visible",
+  "discoveryState": "discovered",
+  "buildable": true,
+  "walkable": true
+}

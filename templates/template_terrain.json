@@ -1,0 +1,10 @@
+{
+  "id": "terrain-grass",
+  "label": "Grass",
+  "type": "terrain",
+  "description": "Default open terrain for field and pasture use.",
+  "walkable": true,
+  "buildable": true,
+  "movementCost": 1,
+  "terrainTags": ["open", "field"]
+}

@@ -282,3 +282,73 @@ Technical debt:
 Recommendations for the next milestone:
 - Connect the farm model to the save payload and runtime developer observers so the framework becomes inspectable in the live browser prototype without modifying any gameplay behavior.
 
+## Milestone 7 - Land & Tile Simulation
+Date: 2026-08-04
+Objectives:
+- Build the permanent land simulation foundation that all future gameplay systems will use.
+- Keep crops, buildings, and animals out of scope for the milestone.
+- Preserve the current prototype loop, UI, CSS, and save behavior while introducing a tile-first world foundation.
+
+Completed work:
+- Added `TileDefinition` as the universal tile data contract with coordinates, terrain, owner, object, crop/building/animal references, movement, occupancy, and visibility metadata.
+- Added `GridSystem` as the permanent grid model with world origin, chunk size, coordinate lookup, dirty tile tracking, chunk snapshot retrieval, and event emission.
+- Added `TerrainDefinition` and `TerrainRegistry` to keep terrain types data-driven and JSON-loadable.
+- Added `SoilDefinition` to store the soil chemistry and state fields required by the future land simulation.
+- Added a generic `PathfindingService` foundation interface for future player, animal, farmhand, neighbor, and vehicle movement routing.
+- Extended the shared event vocabulary with `TileChanged`, `ObjectPlaced`, `ObjectRemoved`, `TerrainChanged`, `OwnershipChanged`, `SoilChanged`, and `WaterChanged` events.
+- Added developer placeholder tools for tile, soil, terrain painting, pathfinding overlay, and chunk inspection.
+- Added JSON templates for terrain, tile types, soil types, biome definitions, and terrain decorations.
+
+Files created:
+- `src/world/grid/TileDefinition.js`
+- `src/world/grid/GridSystem.js`
+- `src/world/terrain/TerrainDefinition.js`
+- `src/world/terrain/TerrainRegistry.js`
+- `src/world/soil/SoilDefinition.js`
+- `src/pathfinding/PathfindingService.js`
+- `src/developer/panels/TileInspectorPanel.js`
+- `src/developer/panels/SoilInspectorPanel.js`
+- `src/developer/panels/TerrainPainterPanel.js`
+- `src/developer/panels/PathfindingOverlayPanel.js`
+- `src/developer/panels/ChunkViewerPanel.js`
+- `templates/template_terrain.json`
+- `templates/template_tile_type.json`
+- `templates/template_soil_type.json`
+- `templates/template_biome_definition.json`
+- `templates/template_terrain_decoration.json`
+- `PROJECTVISION.md`
+- `GAME_FEATURE_QUEUE.md`
+
+Files modified:
+- `src/world/systems/WorldManager.js`
+- `src/events/EventNames.js`
+- `docs/Architecture.md`
+- `docs/DeveloperGuide.md`
+- `docs/GameBible.md`
+- `docs/JSON_SCHEMAS.md`
+- `docs/ContentCreationGuide.md`
+- `docs/PROMPT_INDEX.md`
+- `MILESTONES.md`
+
+Architecture changes:
+- Introduced a tile-first land simulation foundation that is independent from crop, animal, and building logic.
+- Kept the active browser prototype stable while placing every future gameplay object behind the world grid and tile boundary.
+- Added a chunk-aware dirty-tile operational model that is designed for efficient delta saves.
+- Preserved the modular, data-driven philosophy through registries, templates, and event-driven lifecycle propagation.
+
+Remaining work:
+- Connect the tile grid into a save migration path and developer runtime bridge without changing the active player loop.
+- Expand the terrain registry and content validation pipeline with richer biome/terrain content definitions.
+- Keep all future land systems inert until their gameplay rules are explicitly designed.
+
+Known issues:
+- Tile rendering and terrain painting are not yet exposed to the live UI.
+- No gameplay systems consume the tile and soil data yet.
+- Pathfinding remains a placeholder interface and not a route optimizer.
+
+Technical debt:
+- The land simulation is now structural and future-ready, but gameplay-bound behaviors are intentionally withheld until a later milestone.
+
+Recommendations for the next milestone:
+- Wire the tile and chunk model into the live save contract and developer runtime observation path while leaving the current gameplay loop unchanged.
+

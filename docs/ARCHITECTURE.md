@@ -27,6 +27,40 @@ The project is now moving from a single-file browser prototype into a production
 7. Farm management layer
    - Farm model, farm state manager, statistics manager, ownership service, land service, storage service, power service, water service, and expansion service.
 
+## Land and tile architecture
+The world layer now includes a tile-first grid foundation that is designed for future land simulation systems such as crops, buildings, animals, trees, roads, fences, water systems, decorations, and utilities.
+
+### Grid foundation
+- The grid supports configurable map sizing and world-origin-based coordinates.
+- Tile IDs are stable and coordinate-based to support efficient lookup and chunked save strategies.
+- The grid is intentionally infinite-ready and should remain independent from any single crop or building system.
+
+### Tile data model
+Every tile stores:
+- id, grid position, and world position
+- terrain type and elevation
+- slope, moisture, fertility, drainage, and water table
+- soil type, pH, and soil chemistry values
+- current owner and current object lifecycle references
+- movement cost, buildability, walkability, occupation, reserved state, visibility, and discovery state
+- future utility attachment metadata
+
+### Soil framework
+The soil framework stores organic matter, nitrogen, phosphorus, potassium, compaction, acidity, saturation, temperature, weed pressure, and disease risk. These values are tracked for future simulation effect but remain inert during this milestone.
+
+### Object layer
+The object layer is designed so future tiles can register trees, decorations, rocks, fences, machinery, animals, crop plots, roads, utilities, and future underground systems without hardcoding.
+
+### Event boundary
+The world layer emits the required land lifecycle events through the shared EventBus:
+- `TileChanged`
+- `ObjectPlaced`
+- `ObjectRemoved`
+- `TerrainChanged`
+- `OwnershipChanged`
+- `SoilChanged`
+- `WaterChanged`
+
 ## Current architecture status
 The engine is not yet wired into every gameplay system, but the boundaries are now present for future extension without redesign.
 

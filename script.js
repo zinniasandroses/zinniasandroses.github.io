@@ -22,31 +22,33 @@ const SPEEDUP_THRESHOLD_MS = 5 * 1000;
 const SUNSET_WINDOW_MS = 5 * 60 * 1000;
 
 const LIGHT_THEME = {
-    bg: '#f8f4e6',
+    bg: '#f9f6ea',
     panel: '#fffdf4',
     text: '#1f2a1f',
-    border: '#d6cab1',
+    mutedText: '#5f654a',
+    border: '#d8c8a2',
     accent: '#3e7c43',
     accentDark: '#29522d',
     header: '#234f2b',
-    statCard: 'rgba(255, 255, 255, 0.16)',
+    statCard: '#ffffff',
     plot: '#d8e7c6',
-    plotEmpty: '#f2ecd4',
-    plotTag: 'rgba(30, 67, 38, 0.15)'
+    plotEmpty: '#f4ead2',
+    plotTag: '#d8e5c5'
 };
 
 const DARK_THEME = {
-    bg: '#171b22',
-    panel: '#262d36',
-    text: '#f2f6f8',
-    border: '#4a545f',
-    accent: '#94c98a',
-    accentDark: '#5f8c63',
-    header: '#0d1117',
-    statCard: 'rgba(0, 0, 0, 0.26)',
-    plot: '#33433d',
-    plotEmpty: '#2b3439',
-    plotTag: 'rgba(192, 224, 199, 0.16)'
+    bg: '#090c10',
+    panel: '#161c24',
+    text: '#f4f7f8',
+    mutedText: '#c7d7dc',
+    border: '#516073',
+    accent: '#9bd69a',
+    accentDark: '#6bab76',
+    header: '#07090d',
+    statCard: '#11161d',
+    plot: '#23352c',
+    plotEmpty: '#1b2229',
+    plotTag: '#30463a'
 };
 
 let remainingDayMs = REAL_TIME_DAY_INTERVAL_MS;
@@ -59,7 +61,11 @@ const speedUpTimerCheckbox = document.getElementById('speedUpTimerCheckbox');
 const sunsetOverlay = document.getElementById('sunsetOverlay');
 
 function parseColorValue(colorValue) {
-    if (colorValue.startsWith('#')) {
+    if (!colorValue) {
+        return { r: 0, g: 0, b: 0 };
+    }
+
+    if (typeof colorValue === 'string' && colorValue.startsWith('#')) {
         const fullHex = colorValue.replace('#', '');
         const normalized = fullHex.length === 3
             ? fullHex.split('').map((char) => char + char).join('')
@@ -72,7 +78,7 @@ function parseColorValue(colorValue) {
         };
     }
 
-    const match = colorValue.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+    const match = String(colorValue).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
     if (match) {
         return {
             r: Number(match[1]),
@@ -106,6 +112,7 @@ function applyThemeProgress() {
     document.documentElement.style.setProperty('--bg', mixColors(LIGHT_THEME.bg, DARK_THEME.bg, easedProgress));
     document.documentElement.style.setProperty('--panel', mixColors(LIGHT_THEME.panel, DARK_THEME.panel, easedProgress));
     document.documentElement.style.setProperty('--text', mixColors(LIGHT_THEME.text, DARK_THEME.text, easedProgress));
+    document.documentElement.style.setProperty('--muted-text', mixColors(LIGHT_THEME.mutedText, DARK_THEME.mutedText, easedProgress));
     document.documentElement.style.setProperty('--border', mixColors(LIGHT_THEME.border, DARK_THEME.border, easedProgress));
     document.documentElement.style.setProperty('--accent', mixColors(LIGHT_THEME.accent, DARK_THEME.accent, easedProgress));
     document.documentElement.style.setProperty('--accent-dark', mixColors(LIGHT_THEME.accentDark, DARK_THEME.accentDark, easedProgress));

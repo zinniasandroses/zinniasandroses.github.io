@@ -37,6 +37,15 @@ Resource templates should enumerate baseline limits, current value, regeneration
 ## Farm starter data format
 Starter farm data should be a serializable profile that includes metadata, farm state, default capacities, and baseline resource state. This data can then be consumed by the `Farm` object without any UI or gameplay-specific logic.
 
+## Terrain and tile content format
+Terrain definitions should remain data-driven and should be added through JSON template entries. They should include stable IDs, labels, movement costs, walkability, buildability, terrain tags, and future description metadata.
+
+## Soil content format
+Soil definitions should store only the soil-state fields required for future simulation and diagnostics. They should remain inert until gameplay systems consume them.
+
+## Biome template format
+Biome definitions should remain registry-friendly and should describe supported terrains, default soil, and the present environmental bands for the biome.
+
 ## Best practices
 - Keep field names explicit and stable.
 - Prefer data over behavior.

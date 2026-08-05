@@ -1,0 +1,10 @@
+{
+  "id": "biome-farm-plains",
+  "label": "Farm Plains",
+  "description": "A balanced biome for the early game farm experience.",
+  "supportedTerrains": ["grass", "farmland"],
+  "defaultSoil": "loam",
+  "temperatureBand": 0,
+  "moistureBand": 0,
+  "fertilityBand": 1
+}
